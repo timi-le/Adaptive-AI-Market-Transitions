@@ -32,21 +32,8 @@ When adaptive AI agents become economically significant, their actions can alter
 | `tests/` | Unit, invariant, and reproducibility tests |
 | `docs/` | Research protocol and repository documentation |
 
-## Compile the paper
-
-```bash
-cd paper
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
-```
-
-Or upload `overleaf-paper.zip` to Overleaf as a new project.
 
 ## Reproducibility boundary
 
 Raw proprietary or redistribution-restricted model responses, credentials, broker records, model checkpoints, and private operational logs are not committed. Public release requires a completed data card, provenance record, license review, and leakage-safe split.
 
-## Anonymity
-
-The manuscript defaults to anonymous review mode. Do not make an author-identifying repository the review link. Build a separate sanitized artifact for double-blind review.
-
-The canonical URL above is for development and the eventual public release. It must not appear in the anonymous manuscript or review supplement.
