@@ -1,0 +1,1 @@
+{"base":{"steps":160,"shock_step":60,"adaptive_share":0.5},"factors":{"capital":[1000000,5000000],"depth":[200000,1000000],"agents":[20,60],"trade_fraction":[0.01,0.05],"shared_error":[0.0,0.8]},"seeds":[101,202,303]}

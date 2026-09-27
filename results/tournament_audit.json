@@ -1,0 +1,386 @@
+{
+  "combined": {
+    "group_agreement": {
+      "unanimous_decisions": 16735,
+      "unanimous_pct": 71.47433159648074,
+      "unique_prompts": 23414,
+      "vote_count_partition": {
+        "1": 4164,
+        "1-1": 817,
+        "1-1-1": 313,
+        "2": 8264,
+        "2-1": 1915,
+        "2-1-1": 1025,
+        "2-2": 865,
+        "3": 1943,
+        "3-1": 1744,
+        "4": 2364
+      }
+    },
+    "pairwise_model_agreement": [
+      {
+        "cohen_kappa": 0.1743373406012596,
+        "model_a": "claude-sonnet-4-6",
+        "model_b": "gpt-4.1-mini",
+        "raw_agreement_pct": 43.02481556002683,
+        "shared_decisions": 8946
+      },
+      {
+        "cohen_kappa": 0.3618470610051311,
+        "model_a": "claude-sonnet-4-6",
+        "model_b": "llama-3.3-70b",
+        "raw_agreement_pct": 51.19809495460634,
+        "shared_decisions": 6719
+      },
+      {
+        "cohen_kappa": 0.7068942318656746,
+        "model_a": "claude-sonnet-4-6",
+        "model_b": "mistral-large-3",
+        "raw_agreement_pct": 82.31495874686118,
+        "shared_decisions": 8363
+      },
+      {
+        "cohen_kappa": 0.47911109481708225,
+        "model_a": "gpt-4.1-mini",
+        "model_b": "llama-3.3-70b",
+        "raw_agreement_pct": 64.30842607313195,
+        "shared_decisions": 8806
+      },
+      {
+        "cohen_kappa": 0.30262290696064886,
+        "model_a": "gpt-4.1-mini",
+        "model_b": "mistral-large-3",
+        "raw_agreement_pct": 55.18008903278025,
+        "shared_decisions": 9884
+      },
+      {
+        "cohen_kappa": 0.7415424083897593,
+        "model_a": "llama-3.3-70b",
+        "model_b": "mistral-large-3",
+        "raw_agreement_pct": 86.71286329386437,
+        "shared_decisions": 14864
+      }
+    ],
+    "rows": 58831
+  },
+  "cross_split": {
+    "decision_id_overlap": 5186,
+    "exact_user_prompt_overlap": 0
+  },
+  "declared_quality_report": {
+    "eval_set_size": 8825,
+    "export_timestamp": "2026-06-10T08:19:01.185402+00:00",
+    "filters_applied": [
+      "confidence > 0 (excludes failed API calls)",
+      "no error_message",
+      "direction IN (LONG, SHORT, NEUTRAL) -- excludes ABSTAIN",
+      "reasoning_text length > 50 chars"
+    ],
+    "model_breakdown": {
+      "claude-sonnet-4-6": {
+        "aligns_with_consensus": 8550,
+        "avg_confidence": 0.6581,
+        "consensus_alignment_pct": 90.6,
+        "count": 9437
+      },
+      "gpt-4.1-mini": {
+        "aligns_with_consensus": 7304,
+        "avg_confidence": 0.6334,
+        "consensus_alignment_pct": 60.3,
+        "count": 12103
+      },
+      "llama-3.3-70b": {
+        "aligns_with_consensus": 17208,
+        "avg_confidence": 0.4137,
+        "consensus_alignment_pct": 86.3,
+        "count": 19929
+      },
+      "mistral-large-3": {
+        "aligns_with_consensus": 16388,
+        "avg_confidence": 0.5354,
+        "consensus_alignment_pct": 94.4,
+        "count": 17362
+      }
+    },
+    "output_files": {
+      "eval": "ml/datasets/tournament/training_pairs/tournament_eval.jsonl",
+      "train": "ml/datasets/tournament/training_pairs/tournament_train.jsonl"
+    },
+    "skipped_invalid": 0,
+    "split_ratio": "85/15 chronological",
+    "total_responses_in_db": 58831,
+    "total_training_examples": 58831,
+    "train_set_size": 50006
+  },
+  "observed": {
+    "eval": {
+      "assistant_json_failures": 0,
+      "by_model": {
+        "claude-sonnet-4-6": {
+          "confidence": {
+            "count": 168,
+            "max": 0.65,
+            "mean": 0.5076190476190476,
+            "min": 0.35
+          },
+          "consensus_alignment_count": 136,
+          "consensus_alignment_pct": 80.95238095238095,
+          "count": 168,
+          "directions": {
+            "LONG": 24,
+            "NEUTRAL": 98,
+            "SHORT": 46
+          }
+        },
+        "llama-3.3-70b": {
+          "confidence": {
+            "count": 5209,
+            "max": 0.85,
+            "mean": 0.28859282011902476,
+            "min": 0.2
+          },
+          "consensus_alignment_count": 5203,
+          "consensus_alignment_pct": 99.88481474371281,
+          "count": 5209,
+          "directions": {
+            "LONG": 28,
+            "NEUTRAL": 5143,
+            "SHORT": 38
+          }
+        },
+        "mistral-large-3": {
+          "confidence": {
+            "count": 3448,
+            "max": 0.85,
+            "mean": 0.36526972157772625,
+            "min": 0.3
+          },
+          "consensus_alignment_count": 3411,
+          "consensus_alignment_pct": 98.92691415313224,
+          "count": 3448,
+          "directions": {
+            "LONG": 30,
+            "NEUTRAL": 3369,
+            "SHORT": 49
+          }
+        }
+      },
+      "confidence_metadata_errors": 0,
+      "consensus_directions": {
+        "ABSTAIN": 61,
+        "LONG": 69,
+        "NEUTRAL": 8581,
+        "SHORT": 114
+      },
+      "copy_consensus_baseline": {
+        "accuracy_pct": 99.15014164305948,
+        "correct": 8750
+      },
+      "directions": {
+        "LONG": 82,
+        "NEUTRAL": 8610,
+        "SHORT": 133
+      },
+      "duplicate_model_decision_rows": 83,
+      "majority_direction_baseline": {
+        "accuracy_pct": 97.56373937677054,
+        "direction": "NEUTRAL"
+      },
+      "metadata_alignment_errors": 0,
+      "models": {
+        "claude-sonnet-4-6": 168,
+        "llama-3.3-70b": 5209,
+        "mistral-large-3": 3448
+      },
+      "prompt_metadata_consensus_errors": 0,
+      "reasoning_mentions_context_absent_from_exported_prompt": {
+        "alpha": {
+          "count": 8825,
+          "pct": 100.0
+        },
+        "market_regime": {
+          "count": 8823,
+          "pct": 99.97733711048159
+        },
+        "news": {
+          "count": 7719,
+          "pct": 87.46742209631728
+        },
+        "signal_quality": {
+          "count": 4,
+          "pct": 0.0453257790368272
+        },
+        "v3": {
+          "count": 5692,
+          "pct": 64.4985835694051
+        }
+      },
+      "responses_per_decision_id": {
+        "1": 1795,
+        "2": 3212,
+        "3": 154,
+        "4": 36
+      },
+      "rows": 8825,
+      "timing": {
+        "response_before_prompt_timestamp_count": 8825,
+        "response_before_prompt_timestamp_pct": 100.0,
+        "response_minus_prompt_seconds": {
+          "count": 8825,
+          "max": -1.414047,
+          "mean": -2.2856101443626065,
+          "min": -63.089686
+        }
+      },
+      "unique_decision_ids": 5197,
+      "unique_user_prompts": 5244,
+      "user_prompts_repeated_for_multiple_targets": 3438
+    },
+    "train": {
+      "assistant_json_failures": 0,
+      "by_model": {
+        "claude-sonnet-4-6": {
+          "confidence": {
+            "count": 9269,
+            "max": 0.99,
+            "mean": 0.6607962023950804,
+            "min": 0.15
+          },
+          "consensus_alignment_count": 8414,
+          "consensus_alignment_pct": 90.77570395943468,
+          "count": 9269,
+          "directions": {
+            "LONG": 974,
+            "NEUTRAL": 5926,
+            "SHORT": 2369
+          }
+        },
+        "gpt-4.1-mini": {
+          "confidence": {
+            "count": 12103,
+            "max": 1.0,
+            "mean": 0.6333594976452119,
+            "min": 0.3
+          },
+          "consensus_alignment_count": 7304,
+          "consensus_alignment_pct": 60.34867388250847,
+          "count": 12103,
+          "directions": {
+            "LONG": 1604,
+            "NEUTRAL": 4640,
+            "SHORT": 5859
+          }
+        },
+        "llama-3.3-70b": {
+          "confidence": {
+            "count": 14720,
+            "max": 1.0,
+            "mean": 0.45792595108695655,
+            "min": 0.2
+          },
+          "consensus_alignment_count": 12005,
+          "consensus_alignment_pct": 81.55570652173913,
+          "count": 14720,
+          "directions": {
+            "LONG": 3747,
+            "NEUTRAL": 8364,
+            "SHORT": 2609
+          }
+        },
+        "mistral-large-3": {
+          "confidence": {
+            "count": 13914,
+            "max": 1.0,
+            "mean": 0.5775643237027454,
+            "min": 0.1
+          },
+          "consensus_alignment_count": 12977,
+          "consensus_alignment_pct": 93.26577547793589,
+          "count": 13914,
+          "directions": {
+            "LONG": 1776,
+            "NEUTRAL": 9418,
+            "SHORT": 2720
+          }
+        }
+      },
+      "confidence_metadata_errors": 0,
+      "consensus_directions": {
+        "ABSTAIN": 425,
+        "LONG": 6019,
+        "NEUTRAL": 33818,
+        "SHORT": 9744
+      },
+      "copy_consensus_baseline": {
+        "accuracy_pct": 81.39023317201936,
+        "correct": 40700
+      },
+      "directions": {
+        "LONG": 8101,
+        "NEUTRAL": 28348,
+        "SHORT": 13557
+      },
+      "duplicate_model_decision_rows": 2908,
+      "majority_direction_baseline": {
+        "accuracy_pct": 56.689197296324444,
+        "direction": "NEUTRAL"
+      },
+      "metadata_alignment_errors": 0,
+      "models": {
+        "claude-sonnet-4-6": 9269,
+        "gpt-4.1-mini": 12103,
+        "llama-3.3-70b": 14720,
+        "mistral-large-3": 13914
+      },
+      "prompt_metadata_consensus_errors": 0,
+      "reasoning_mentions_context_absent_from_exported_prompt": {
+        "alpha": {
+          "count": 34537,
+          "pct": 69.06571211454626
+        },
+        "market_regime": {
+          "count": 34491,
+          "pct": 68.97372315322161
+        },
+        "news": {
+          "count": 30191,
+          "pct": 60.374755029396475
+        },
+        "signal_quality": {
+          "count": 273,
+          "pct": 0.5459344878614566
+        },
+        "v3": {
+          "count": 11505,
+          "pct": 23.007239131304242
+        }
+      },
+      "responses_per_decision_id": {
+        "1": 1693,
+        "2": 4189,
+        "3": 3611,
+        "4": 6016,
+        "5": 705,
+        "6": 4,
+        "7": 7,
+        "8": 175,
+        "12": 2,
+        "16": 1
+      },
+      "rows": 50006,
+      "timing": {
+        "response_before_prompt_timestamp_count": 50005,
+        "response_before_prompt_timestamp_pct": 99.9980002399712,
+        "response_minus_prompt_seconds": {
+          "count": 50006,
+          "max": 0.242159,
+          "mean": -2.511347280326361,
+          "min": -426.626976
+        }
+      },
+      "unique_decision_ids": 16403,
+      "unique_user_prompts": 18170,
+      "user_prompts_repeated_for_multiple_targets": 15812
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "seed_rule": "20260906 + replicate, replicate=0,...,199",
+  "replicates": 200,
+  "training_length": 2000,
+  "test_length": 1000,
+  "transition": [
+    [
+      0.97,
+      0.03
+    ],
+    [
+      0.03,
+      0.97
+    ]
+  ],
+  "emission_means": [
+    -0.7,
+    0.7
+  ],
+  "emission_sd": 1.3,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "training_states": "oracle observed",
+  "filter_parameters": "oracle nominal, frozen",
+  "test_filter_inputs": "M only; no outcomes, treatment, confounder, or true state",
+  "outcome": "synthetic structural coefficient MSE, not return"
+}

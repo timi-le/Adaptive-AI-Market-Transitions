@@ -1,0 +1,41 @@
+\section{Exact simulation specification}
+All settings below are chosen, not estimated from the model tournament. Default horizon is 200 steps; experiment configurations override it. Default initial price is 100, total capital 1,000,000, population 40, adaptive capital share 0.5, depth 200,000, per-step agent trade limit 0.02 of equity, and aggregate gross volume limit 0.25 of depth. The spread is four basis points and the fee one basis point; one basis point is 0.01 percent. Fundamental log-volatility is 0.002 per step, price-noise standard deviation 0.0005, fundamental attraction 0.05, impact strength 0.03, and shock size $-0.08$ in fundamental log value.
+
+The adaptive value component is $\tanh(8\log(F_t/P_t))$. With no historical reference, the replay component is zero. The chosen default momentum coefficient is 15. The resulting signal is gain times (replay plus value plus momentum), plus error, clipped to $[-1,1]$. Background signals are the value component plus noise of standard deviation 0.05, clipped to the same interval. The adaptive exposure fraction begins at 0.6, receives chosen portfolio noise, is clipped to $[0,1]$, then is multiplied by $\exp(-3d)$ where $d$ is the agent's fractional drawdown. Background exposure fraction is 0.5. Default target multiplier is one.
+
+At update steps, gain increases by the chosen learning-rate parameter times the last step's equity return, clipped to $[-0.1,0.1]$. Gain itself is bounded to $[0.5,1.5]$. The default rate is 0.02 and update interval five steps. This rule uses the latest step, not the cumulative return since the previous update. It is numerical policy feedback, not a learned language-model update. Default signal threshold is 0.15 and default drawdown aversion is 3.
+
+\begin{table}[h]\centering
+\caption{Experiment grids. Each listed cell runs with and without a shock.}
+\begin{tabular}{p{.20\linewidth}p{.68\linewidth}}\toprule
+Study & Settings\\\midrule
+Broad grid & 160 steps; shock step 60; capital 1 or 5 million; depth 0.2 or 1 million; agents 20 or 60; trade fraction 0.01 or 0.05; shared error 0 or 0.8; seeds 101, 202, 303.\\
+Profiles & 120 steps; shock step 40; capital 1 million; depth 0.2 million; 40 agents; trade fraction 0.02; adaptive share 0.25 or 0.75; shared error 0 or 0.9; seeds 0--19.\\
+Robustness & 120 steps; shock step 40; other defaults; impact function tanh or linear; target multiplier 1 or 2; update interval 1 or 20; seeds 0--9.\\\bottomrule
+\end{tabular}\end{table}
+
+\begin{table}[h]\centering
+\caption{Profile overrides. Shared-error fractions are overwritten by the profile grid. All other values retain defaults.}
+\begin{tabular}{lp{.72\linewidth}}\toprule
+P0 & Trade and portfolio error scales zero; adaptation rate zero.\\
+P1 & Trade error scale 0.05; portfolio error scale 0.02.\\
+P2 & Trade error scale 0.30; portfolio error scale 0.15.\\
+P3 & P2 settings; momentum coefficient 30.\\
+P4 & Trade error scale 0.15; portfolio error scale 0.05; update interval 20.\\
+P5 & Trade error scale 0.15; portfolio error scale 0.05; threshold 0.40; drawdown aversion 6.\\\bottomrule
+\end{tabular}\end{table}
+
+\section{Uncertainty, counting, and implementation}
+For $n$ seed contrasts $I_r$, the sample mean is $\bar I=n^{-1}\sum_r I_r$. The standard error is $s_I/\sqrt n$, where $s_I$ is their sample standard deviation, and the interval is $\bar I\pm t_{0.975,n-1}s_I/\sqrt n$. Here $t_{0.975,n-1}$ is the 97.5th percentile of the Student-$t$ distribution with $n-1$ degrees of freedom. The interval describes the mean over the simulator's seed distribution. Repeated seeds across parameter cells are paired, not additional independent samples. P0 produces identical runs across shared-error settings because both error scales are zero; duplicate conditions are retained for the factorial layout and are not pooled to inflate sample size.
+
+For $N$ agents and $T$ steps, array-based state updates take $O(NT)$ time. In the current implementation the categorical agreement calculation uses a general unique-value routine, giving a conservative $O(TN\log N)$ time bound. The code stores independent random streams and summaries, using $O(NT)$ memory. These orders mean work grows with the number of simulated agent-steps; no asymptotic speed comparison with exchange simulators is claimed.
+
+Hash matching stores input hashes in dictionaries and intersects the per-model keys. Expected time and memory are linear in export size with a fixed four-model count. Exact-input agreement counts are descriptive; repeated decisions are not treated as independent draws. For Cohen's $\kappa=(A-p_e)/(1-p_e)$, $A$ is observed agreement and $p_e$ is agreement expected from the two marginal label frequencies. Thus kappa subtracts chance agreement and rescales the remaining possible agreement.
+
+\section{Reproduction and access}
+The public supplement contains the simulator, all chosen configurations, seed-level synthetic outputs, corpus-audit scripts, and aggregate evidence tables. Running \texttt{python reproduce.py} regenerates the market grids, the CMTF diagnostic used by the companion paper, and the reported participation contrasts. The latter diagnostic is not a result contribution of this market paper. The public notebook gives execution and interpretation steps. Private logs and corpus originals are intentionally absent; their audit scripts require separately authorized inputs. Consequently, source-level reproduction of the operational audit is restricted, while synthetic results can be regenerated without credentials.
+
+The preparation environment used Python 3.12.14, NumPy 2.3.5, pandas 2.2.3, SciPy 1.17.0, scikit-learn 1.8.0, Matplotlib 3.10.8, nbformat 5.11.1, nbclient 0.11.0, and ipykernel 7.3.0 on a CPU-only Linux execution environment. CPU hardware was not recorded as a controlled benchmark factor; runtime is not a research claim. The earlier eight-notebook author bundle includes both restricted-source audits and synthetic studies; the public notebook makes the access distinction explicit.
+
+\section{Claim-to-evidence map}
+Operational existence is supported by captured startup configuration and event records. Response diversity is supported by a common exported-input panel. Conditional market effects are supported by paired synthetic contrasts. Neither stream proves a named model's counterfactual policy, a full two-role replay, alpha persistence, liquidity withdrawal, or a market transition threshold. Aggregate outputs are supplied for inspection, not as a substitute for missing raw provenance.

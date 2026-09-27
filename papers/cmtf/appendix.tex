@@ -1,0 +1,19 @@
+\section{Algorithm and code mapping}
+In \texttt{synthetic\_study.py}, \texttt{state} stores the integer regime sequence, \texttt{c/x/y/m} store the common cause, treatment, outcome, and regime observation, and \texttt{q} stores a matrix with one row per time and two state-probability columns. \texttt{A}, \texttt{MEANS}, and \texttt{SIGMA} implement the transition matrix, emission means, and observation standard deviation. \texttt{beta} is the two-element vector of fitted state-specific slopes. Matrix multiplication \texttt{q @ beta} takes the probability-weighted sum for each row and returns a vector of coefficient predictions.
+
+The generator first samples a state sequence, then independent disturbances, then constructs treatment, outcome, and observation arrays. The filter processes observations sequentially. Regression uses only the training segment and oracle training states. Predictions are evaluated on test coefficients supplied by the simulator. This ordering isolates observation-model failure and avoids fitting regression coefficients on test outcomes.
+
+The router processes a list of immutable evidence records. It first checks unique identifiers, then records a reason for each rejected item. Valid logits enter a stable exponential normalization. An empty eligible list returns abstention. The output dictionary contains status, weights, and rejection reasons. It contains no broker order and does not execute any action.
+
+\section{Paired differences and numerical scope}
+The mean hard-minus-soft MSE differences are 0.129911 (Monte Carlo standard error 0.002849), 0.131984 (0.005207), 0.610536 (0.003371), and 0.032484 (0.000783) for observed confounding, hidden confounding, emission reversal, and inactive second regime, respectively. Each difference is first computed within the same replicate. Its standard deviation across 200 replicates is divided by $\sqrt{200}$ to obtain the reported standard error. This avoids treating correlated methods as independent observations.
+
+The conditional-mean derivation in the main text assumes exact coefficients and correct posterior probabilities. The experiment uses estimated coefficients and, deliberately in one scenario, wrong emission parameters. The mathematical identity is an explanation of the nominal behavior, not a guarantee for the implemented filter under misspecification.
+
+\section{Execution and artifact availability}
+Run \texttt{python reproduce.py} at the public package root. The diagnostic outputs include raw replicate MSE and mean absolute error, summary means and standard errors, state-recovery diagnostics, paired comparisons, and an environment manifest. Mean absolute error averages the absolute rather than squared coefficient deviation and is provided as a secondary diagnostic. No raw financial or user data are required for this paper's numerical tables.
+
+The implementation uses CPU-based NumPy and pandas; no GPU or provider endpoint is invoked. The archived environment specifies Python 3.12.14, NumPy 2.3.5, pandas 2.2.3, SciPy 1.17.0, and Matplotlib 3.10.8. The seed schedule and nominal parameters are fixed in the supplied script. Five router contract tests cover implemented behavior. Full statistical results consist of 800 generated datasets and 4,000 method rows.
+
+\section{Relationship to the companion study}
+The companion market study uses an operational audit, exported directional responses, and a separate price-feedback simulator. It does not evaluate this evidence router as a live causal controller. Conversely, the present study does not reuse market returns as evidence of causal identification. The two papers share motivation and software packaging but have distinct outcome measures, data-generating processes, and empirical claims. The original conceptual note is cited as prior work rather than described as an independent evaluation.

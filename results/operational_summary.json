@@ -1,0 +1,12 @@
+{
+  "events": 28165,
+  "decision_files": 64,
+  "entry_model_outputs": 2121,
+  "HOLD": 1913,
+  "SELL": 148,
+  "BUY": 60,
+  "entry_execution_response_pairs": 229,
+  "portfolio_actions": 55,
+  "complete_portfolio_responses": 0,
+  "scope": "Aggregate restricted-source audit; raw logs excluded."
+}

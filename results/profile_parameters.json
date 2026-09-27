@@ -1,0 +1,82 @@
+{
+  "assumed_profiles": {
+    "P0_reference_proxy": {
+      "perturbation_sd": 0.0,
+      "portfolio_noise_sd": 0.0,
+      "shared_error": 0.0,
+      "adaptation_rate": 0.0
+    },
+    "P1_low_noise": {
+      "perturbation_sd": 0.05,
+      "portfolio_noise_sd": 0.02,
+      "shared_error": 0.0
+    },
+    "P2_high_noise": {
+      "perturbation_sd": 0.3,
+      "portfolio_noise_sd": 0.15,
+      "shared_error": 0.0
+    },
+    "P3_stronger_feedback": {
+      "perturbation_sd": 0.3,
+      "portfolio_noise_sd": 0.15,
+      "momentum_feedback": 30.0
+    },
+    "P4_slow_adaptation": {
+      "perturbation_sd": 0.15,
+      "portfolio_noise_sd": 0.05,
+      "shared_error": 0.5,
+      "adaptation_interval": 20
+    },
+    "P5_selective_proxy_gate": {
+      "perturbation_sd": 0.15,
+      "portfolio_noise_sd": 0.05,
+      "shared_error": 0.5,
+      "gate_threshold": 0.4,
+      "drawdown_aversion": 6.0
+    }
+  },
+  "study": {
+    "purpose": "Six hypothetical profiles, not six measured language models; selected after inspecting data availability, not a preregistration.",
+    "base": {
+      "steps": 120,
+      "shock_step": 40,
+      "agents": 40,
+      "capital": 1000000,
+      "depth": 200000,
+      "trade_fraction": 0.02
+    },
+    "factors": {
+      "adaptive_share": [
+        0.25,
+        0.75
+      ],
+      "shared_error": [
+        0.0,
+        0.9
+      ]
+    },
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "interpretation": "Within-simulator sensitivities. Intervals quantify Monte Carlo variability only; no market/model calibration uncertainty."
+}

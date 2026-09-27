@@ -1,0 +1,76 @@
+{
+  "scope": "Exact exported user-input matches; original generation inputs are unverified.",
+  "duplicate_exported_prompt_model_rows": 0,
+  "common_four_model_prompt_count": 5998,
+  "panel_response_count_by_split": {
+    "train": 23992
+  },
+  "panel_unique_decision_ids": 5816,
+  "common_panel_pairwise": [
+    {
+      "model_a": "claude-sonnet-4-6",
+      "model_b": "gpt-4.1-mini",
+      "shared_decisions": 5998,
+      "raw_agreement_pct": 56.20206735578526,
+      "cohen_kappa": 0.3384405688201263
+    },
+    {
+      "model_a": "claude-sonnet-4-6",
+      "model_b": "llama-3.3-70b",
+      "shared_decisions": 5998,
+      "raw_agreement_pct": 52.20073357785929,
+      "cohen_kappa": 0.3695653162169812
+    },
+    {
+      "model_a": "claude-sonnet-4-6",
+      "model_b": "mistral-large-3",
+      "shared_decisions": 5998,
+      "raw_agreement_pct": 80.71023674558187,
+      "cohen_kappa": 0.7033943352849643
+    },
+    {
+      "model_a": "gpt-4.1-mini",
+      "model_b": "llama-3.3-70b",
+      "shared_decisions": 5998,
+      "raw_agreement_pct": 54.434811603867956,
+      "cohen_kappa": 0.30329220261806034
+    },
+    {
+      "model_a": "gpt-4.1-mini",
+      "model_b": "mistral-large-3",
+      "shared_decisions": 5998,
+      "raw_agreement_pct": 56.668889629876624,
+      "cohen_kappa": 0.3353898749545896
+    },
+    {
+      "model_a": "llama-3.3-70b",
+      "model_b": "mistral-large-3",
+      "shared_decisions": 5998,
+      "raw_agreement_pct": 69.42314104701568,
+      "cohen_kappa": 0.5504362782069734
+    }
+  ],
+  "model_direction_counts": {
+    "claude-sonnet-4-6": {
+      "NEUTRAL": 3099,
+      "SHORT": 2035,
+      "LONG": 864
+    },
+    "gpt-4.1-mini": {
+      "NEUTRAL": 1615,
+      "SHORT": 2875,
+      "LONG": 1508
+    },
+    "llama-3.3-70b": {
+      "SHORT": 2467,
+      "LONG": 3250,
+      "NEUTRAL": 281
+    },
+    "mistral-large-3": {
+      "SHORT": 2381,
+      "NEUTRAL": 2062,
+      "LONG": 1555
+    }
+  },
+  "interpretation": "Descriptive agreement on the selected export; neither accuracy nor causal effects of model architecture."
+}

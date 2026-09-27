@@ -1,0 +1,81 @@
+\documentclass[10pt,letterpaper,twocolumn]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\title{Auditing Financial Decision Systems before Simulating Market Feedback}
+\author{Timilehin Olapade\\ATRX Intelligence, Haldane Technologies Inc.}
+\date{27 September 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Financial decision logs can motivate population-level simulations, but missing inference records and assumed alternative policies limit the claims such experiments support. We present a concise study of evidence provenance and market-feedback sensitivity. An audit of ATRX V3 covers 28,165 operational events and 229 entry-to-execution-response pairs. A separate common panel of 5,998 exported inputs yields directional agreement of 52.2--80.7 percent among four recorded model labels. We then run 1,312 synthetic market episodes using explicit accounting, order limits, trading costs, and aggregate price impact. Paired experiments show that increasing adaptive capital participation can either increase or decrease the incremental shock effect on maximum drawdown, depending on assumed response behavior. A stronger threshold-and-drawdown profile does not uniformly reduce shock amplification. These are conditional simulator results, not benchmarks of six actual models or evidence of persistent trading alpha. The study provides reproducible code and a practical distinction between operational evidence, descriptive response diversity, and counterfactual policy assumptions.
+\end{abstract}
+
+\section{Question and evidence}
+An adaptive financial system affects its later inputs when its orders move prices. This feedback connects financial decision-making to performative prediction, where deployment changes the distribution being predicted [1]. Measuring standalone label agreement is insufficient to establish the resulting market effect. We ask what an available deployment archive can reconstruct and what conditional results a transparent simulator can establish beyond that archive.
+
+The ATRX V3 audit includes 64 decision files containing 28,165 distinct events with no parsing failures. A captured June startup identifies Claude Sonnet 4.6 for entry decisions and Mistral Large 3 for portfolio confirmation. This does not identify the provider revision of every event across the January--August archive. The entry outputs comprise 1,913 HOLD, 148 SELL, and 60 BUY records. Joining cycle, symbol, and action yields 229 unique entry/execution-response pairs. Recorded responses do not supply a complete realized-profit ledger.
+
+The portfolio role is especially important: rules propose actions and a model confirms selected actions, while some protective rules bypass the model. The 55 logged portfolio actions lack complete approval, veto, confidence, and fallback responses. Consequently, we cannot reconstruct a full two-model counterfactual from these records. A portfolio exposure fraction introduced by the simulator is an explicit assumption, not a recovered model output.
+
+A separate export contains 58,831 responses across four model labels. Restricting comparisons to 5,998 exact exported user inputs shared by all labels gives the following descriptive agreement:
+\begin{center}\small
+\begin{tabular}{lr}\toprule
+Pair & Agreement\\\midrule
+Claude--GPT & 56.20\%\\
+Claude--Llama & 52.20\%\\
+Claude--Mistral & 80.71\%\\
+GPT--Llama & 54.43\%\\
+GPT--Mistral & 56.67\%\\
+Llama--Mistral & 69.42\%\\\bottomrule
+\end{tabular}
+\end{center}
+The common panel lies entirely in the supplied training split. Original generation prompts are unavailable, repeated underlying decisions occur, and the export excludes some abstentions and errors. The evaluation export is highly neutral and contains overlapping decision identifiers and an input consensus field. These observations support response-diversity description, not original inference replication, fine-tuning improvement, or trading accuracy.
+
+\section{Controlled mechanism}
+We simulate one asset and a fixed agent population trading against an external dealer. The adaptive group receives a chosen share of total initial capital; the background group uses a noisy value response. Each adaptive signal combines fundamental mispricing, recent price movement, bounded outcome feedback, and chosen shared or individual noise. A drawdown-dependent exposure fraction translates the signal into target inventory. Per-agent and aggregate order limits constrain execution. A threshold gate can freeze speculative inventory while independent protective rules remain active.
+
+The next price follows
+\begin{align}
+ \log(P_{t+1}/P_t)={}&a\log(F_{t+1}/P_t)\nonumber\\
+ &+b\tanh(P_t\sum_iq_{i,t}/D)+e_t.
+\end{align}
+Here $t$ indexes time steps; $i$ indexes agents; $P$ is price; $F$ is an exogenous fundamental reference; $q$ is signed executed quantity; $D$ is fixed notional depth; $a$ and $b$ are chosen attraction and impact strengths; and $e$ is random external price noise. All quantities are scalar except the collection of agent orders. The sum adds signed orders, and hyperbolic tangent bounds their impact. The equation says that price changes reflect fundamental information, aggregate orders, and noise. Agents form orders before the current external innovation is revealed.
+
+Execution charges a spread and fee. Agent cash and inventory are offset by the dealer and a fee account, permitting conservation checks. This is an aggregate mechanism rather than an exchange matching engine such as ABIDES [2]. Depth is fixed, and the dealer has no capital constraint. No actual language-model inference runs inside the simulator.
+
+\section{Experiments and findings}
+A 32-cell grid varies total capital, depth, population, trade limits, and shared error across three seeds and two shock conditions, producing 192 episodes. Six assumed response profiles, two adaptive capital shares, two shared-error settings, 20 seeds, and two shock conditions produce 960 more. A 160-episode grid varies the impact function, target-exposure multiplier, and update interval. All 1,312 episodes use declared configurations; none is a calibrated model of an actual exchange.
+
+Maximum drawdown is the largest fraction lost relative to a preceding price peak. For a fixed seed and profile, we calculate the shock's added drawdown at 75\% adaptive capital and subtract its added drawdown at 25\%. This paired difference measures whether participation amplifies the incremental shock response. It is distinct from the effect on drawdown without the shock.
+
+At shared-error setting 0.9, the mean interactions in percentage points are:
+\begin{center}\small
+\begin{tabular}{lrr}\toprule
+Profile & Mean & 95\% interval\\\midrule
+Reference & .168 & [.127,.209]\\
+Low noise & .099 & [.063,.135]\\
+High noise & $-.121$ & [$-.216,-.026$]\\
+Strong feedback & $-.171$ & [$-.266,-.076$]\\
+Slow updates & $-.040$ & [$-.108$, .029]\\
+Selective proxy & .203 & [.153,.254]\\\bottomrule
+\end{tabular}
+\end{center}
+Intervals use the 20 seed-level differences and a Student-$t$ critical value. They represent simulation randomness conditional on the chosen mechanism, not uncertainty about real markets. The zero-error reference is unchanged by the shared-error setting; those conditions are not pooled as independent observations.
+
+The strong-feedback profile increases no-shock drawdown by 0.616 percentage points when participation rises, despite its negative interaction. Thus a negative incremental shock contrast does not imply lower total stress. The selective profile decreases no-shock drawdown by 0.042 percentage points while increasing incremental shock sensitivity by 0.203 points. A single resilience ranking would hide that distinction. Because the selective profile changes both a threshold and drawdown aversion, it does not isolate the effect of reasoning quality or causal evidence.
+
+\section{Reproducibility and interpretation}
+The broad simulation grid's largest absolute cash residual is $3.73\times10^{-9}$ currency units; the inventory residual is $7.28\times10^{-12}$ asset units. These are numerical bookkeeping checks. The author package executed eight notebooks, 28 code cells, and 21 contract tests. The public package supplies chosen configurations, seed-level synthetic results, code, and aggregate audit tables; source-level operational replication requires access to restricted records.
+
+The reference implementation uses CPU-based Python, NumPy, pandas, and SciPy. A single command regenerates synthetic studies, and a notebook explains the parameters and outputs. The six profiles are assumed behaviors, not substitutes for six measured model policies. Observed label agreement does not identify their price sensitivity, adaptation, or portfolio behavior.
+
+We conclude that response diversity and market effects require different evidence. Audits establish what was recorded; controlled simulations establish conditional consequences of declared mechanisms. This study finds no universal reduction in shock amplification from its selective proxy. It does not estimate risk-adjusted alpha, endogenous liquidity withdrawal, or a critical crash boundary. Its contribution is a reproducible, inspectable route from operational evidence to appropriately bounded simulation claims.
+
+\section*{AI Use and availability}
+ChatGPT/Codex assisted conceptual development, experiment design, implementation, data auditing, mathematical exposition, interpretation, writing, and figures. Numerical outputs and contracts were checked programmatically; author review remains essential. The author is responsible for the work. This extended abstract condenses a longer research manuscript and is intended for non-archival presentation. Public artifacts: \url{https://github.com/timi-le/Adaptive-AI-Market-Transitions}. Private trading logs and credentials are excluded. This paper reports no Agenthon competition score.
+
+\section*{References}
+\noindent [1] Perdomo, J., Zrnic, T., Mendler-D\"unner, C., and Hardt, M. (2020). Performative Prediction. \emph{ICML}, PMLR 119:7599--7609.
+
+\noindent [2] Byrd, D., Hybinette, M., and Balch, T. H. (2019). ABIDES: Towards High-Fidelity Market Simulation for AI Research. arXiv:1904.12066.
+\end{document}

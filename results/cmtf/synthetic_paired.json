@@ -1,0 +1,22 @@
+[
+  {
+    "scenario": "Observed confounder",
+    "hard_minus_soft_mse": 0.12991121510748516,
+    "paired_mcse": 0.002848642635580781
+  },
+  {
+    "scenario": "Hidden confounder",
+    "hard_minus_soft_mse": 0.13198444018907043,
+    "paired_mcse": 0.005206534257714109
+  },
+  {
+    "scenario": "Emission shift",
+    "hard_minus_soft_mse": 0.6105364124274146,
+    "paired_mcse": 0.003371273236228475
+  },
+  {
+    "scenario": "Inactive second regime",
+    "hard_minus_soft_mse": 0.032483915524105636,
+    "paired_mcse": 0.000782627325136484
+  }
+]

@@ -1,0 +1,114 @@
+{
+  "purpose": "Diagnostic test of label-rule recoverability; not evidence of live trading performance.",
+  "exit_timing": [
+    {
+      "model": "majority",
+      "accuracy": 0.6508581752484192,
+      "macro_f1": 0.39425444596443227
+    },
+    {
+      "model": "decision_tree_depth_2",
+      "accuracy": 0.8410117434507678,
+      "macro_f1": 0.7981745462003897
+    },
+    {
+      "model": "decision_tree_depth_3",
+      "accuracy": 0.8410117434507678,
+      "macro_f1": 0.7981745462003897
+    },
+    {
+      "model": "decision_tree_depth_4",
+      "accuracy": 0.8559168925022583,
+      "macro_f1": 0.8501314887351299
+    },
+    {
+      "model": "decision_tree_depth_6",
+      "accuracy": 0.8852755194218609,
+      "macro_f1": 0.8684403345208318
+    },
+    {
+      "model": "decision_tree_depth_8",
+      "accuracy": 0.8861788617886179,
+      "macro_f1": 0.878219948313194
+    },
+    {
+      "model": "decision_tree_depth_unbounded",
+      "accuracy": 0.969286359530262,
+      "macro_f1": 0.9661900929193046
+    }
+  ],
+  "regime_classification": [
+    {
+      "model": "majority",
+      "accuracy": 0.15266927083333334,
+      "macro_f1": 0.04414948696225172
+    },
+    {
+      "model": "decision_tree_depth_2",
+      "accuracy": 0.6015625,
+      "macro_f1": 0.49503353057712823
+    },
+    {
+      "model": "decision_tree_depth_3",
+      "accuracy": 0.8502604166666666,
+      "macro_f1": 0.8483695808052533
+    },
+    {
+      "model": "decision_tree_depth_4",
+      "accuracy": 0.8873697916666666,
+      "macro_f1": 0.8870111051302989
+    },
+    {
+      "model": "decision_tree_depth_6",
+      "accuracy": 0.9156901041666666,
+      "macro_f1": 0.9154185291589703
+    },
+    {
+      "model": "decision_tree_depth_8",
+      "accuracy": 0.92578125,
+      "macro_f1": 0.9255108361958313
+    },
+    {
+      "model": "decision_tree_depth_unbounded",
+      "accuracy": 0.9140625,
+      "macro_f1": 0.9140049008892336
+    }
+  ],
+  "risk_sizing": [
+    {
+      "model": "train_median",
+      "mae": 0.006952619692863596,
+      "r2": -0.11378649246277184
+    },
+    {
+      "model": "decision_tree_depth_2",
+      "mae": 0.005853995335707725,
+      "r2": 0.5022825224017391
+    },
+    {
+      "model": "decision_tree_depth_3",
+      "mae": 0.004125486333233403,
+      "r2": 0.6796756710016012
+    },
+    {
+      "model": "decision_tree_depth_4",
+      "mae": 0.003304683302889704,
+      "r2": 0.7835029083859076
+    },
+    {
+      "model": "decision_tree_depth_6",
+      "mae": 0.0016414880780804598,
+      "r2": 0.9247185109230281
+    },
+    {
+      "model": "decision_tree_depth_8",
+      "mae": 0.0009147891089062623,
+      "r2": 0.9661949520281257
+    },
+    {
+      "model": "decision_tree_depth_unbounded",
+      "mae": 0.0004846431797680078,
+      "r2": 0.9812199670398096
+    }
+  ]
+}

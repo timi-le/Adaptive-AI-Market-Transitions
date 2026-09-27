@@ -1,39 +1,30 @@
-# Endogenous Distribution Shift in Markets with Adaptive AI Agents
+# Adaptive Participation and Causal Evidence Research
+Timilehin Olapade — ATRX Intelligence, Haldane Technologies Inc.
 
-Research code, data audits, simulation experiments, and manuscript sources for:
+This release contains two completed, evidence-bounded manuscripts and a short non-archival workshop version. The numerical claims concern recorded-response audits and explicitly synthetic experiments.
 
-> **Endogenous Distribution Shift in Markets with Adaptive AI Agents: Alpha Decay, Crash Risk, and Neuro-Symbolic Adaptation**
+## Manuscripts
+- `papers/market/main.pdf`: Adaptive Participation and Market Feedback: A Deployment Audit and Reproducible Simulation Study.
+- `papers/cmtf/main.pdf`: Agentic Causal Macro Intelligence: Evidence Contracts and Regime-Routing Failure under Misspecification.
+- `papers/agenthon/main.pdf`: Auditing Financial Decision Systems before Simulating Market Feedback (short version of the market study).
 
-Canonical repository: [timi-le/Adaptive-AI-Market-Transitions](https://github.com/timi-le/Adaptive-AI-Market-Transitions)
+All three include editable LaTeX. The first two include supplementary methodological detail. Their abstracts are available in plain text. Prior proposal wording about established alpha decay, crash boundaries, and full model-population inference has been superseded by the measured results here.
 
-## Research question
+## Run
+Use Python 3.12. Create a virtual environment, then run:
+```sh
+python -m pip install -r requirements.txt
+python reproduce.py
+python -m unittest discover -s tests
+```
+`reproduce.py` generates 1,312 market episodes and 800 CMTF diagnostic datasets (4,000 method rows), checks reported market contrasts, and verifies accounting residuals. It does not call a model service or broker. Open `notebooks/Reproduce_Research.ipynb` for a guided run. Install JupyterLab separately if needed to open a browser-based notebook editor.
 
-When adaptive AI agents become economically significant, their actions can alter the market environment from which they learn. This project studies whether increasing agent-controlled capital, policy similarity, adaptation frequency, leverage, and liquidity constraints produce nonlinear changes in alpha persistence and market stability.
+## Build LaTeX / Overleaf
+Upload a paper folder as a ZIP, select `main.tex`, and compile with pdfLaTeX. Locally use `latexmk -pdf main.tex` inside the paper folder. Figures and references are included.
 
-## Current status
+## Interpretation
+1. Four exported model labels show descriptive response diversity.
+2. Assumed response profiles produce different participation/shock interactions in the simulator.
+3. Synthetic regime routing helps under nominal assumptions but can fail under observation misspecification; oracle states do not remove omitted-confounder bias.
 
-- Implemented-system evidence is being catalogued.
-- Controller and tournament corpora have undergone an initial integrity audit.
-- A compile-ready manuscript scaffold is included.
-- The interactive market simulator and CMTF ablations are under development.
-- No claim of improved profitability or reduced crash risk is made before the corresponding experiments are completed.
-
-## Repository map
-
-| Path | Contents |
-| --- | --- |
-| `paper/` | LaTeX manuscript, sections, bibliography, figures, and tables |
-| `analysis/` | Reproducible data-audit and baseline scripts |
-| `data/` | Data cards, schemas, checksums, and download instructions |
-| `src/` | Market simulator, agents, CMTF, metrics, and utilities |
-| `configs/` | Versioned experiment configurations |
-| `experiments/` | Experiment entry points and run manifests |
-| `results/` | Versioned aggregate tables and figure inputs, not raw run dumps |
-| `tests/` | Unit, invariant, and reproducibility tests |
-| `docs/` | Research protocol and repository documentation |
-
-
-## Reproducibility boundary
-
-Raw proprietary or redistribution-restricted model responses, credentials, broker records, model checkpoints, and private operational logs are not committed. Public release requires a completed data card, provenance record, license review, and leakage-safe split.
-
+See DATA_AVAILABILITY.md for access restrictions. Private logs and credentials are excluded. Public versions use neutral formatting and are not labeled as conference submissions. The author retains responsibility for all claims and submission decisions.

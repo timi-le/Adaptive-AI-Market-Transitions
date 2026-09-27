@@ -1,0 +1,19 @@
+{
+  "method": "IPykernel in-process Jupyter channels; one isolated Python process per notebook; socket-free execution",
+  "python": "3.12.14",
+  "normal_socket_kernel_status": "Unavailable here: TCP and IPC bind operations are prohibited. Use execute_notebooks.py on your own computer.",
+  "partial_selection": false,
+  "notebooks": [
+    {
+      "notebook": "Reproduce_Research.ipynb",
+      "source_sha256": "cbfd8bd2e4763f17222f31cf35731fc705d4bb660fde496ba5ee49e124e7cfa6",
+      "status": "passed",
+      "code_cells": 5,
+      "executed_code_cells": 5,
+      "error_outputs": 0,
+      "elapsed_seconds": 60.235
+    }
+  ],
+  "all_selected_passed": true,
+  "elapsed_seconds": 60.235
+}

@@ -1,0 +1,287 @@
+{
+  "checks": {
+    "declared_eval_matches": true,
+    "declared_total_matches": true,
+    "declared_train_matches": true
+  },
+  "cross_split": {
+    "exact_full_record_overlap": 0,
+    "exact_user_input_overlap": 0
+  },
+  "declared_dataset_report": {
+    "eval_size": 7502,
+    "split": "85/15 random",
+    "task_breakdown": {
+      "algorithm_understanding": 8,
+      "exit_timing": 15000,
+      "regime_classification": 20000,
+      "risk_sizing": 15000
+    },
+    "total_examples": 50008,
+    "train_size": 42506
+  },
+  "observed": {
+    "eval": {
+      "assistant_json_failures": 0,
+      "assistant_keys": {
+        "algorithm_understanding": {
+          "concept": 2,
+          "explanation": 1,
+          "formula": 1,
+          "math": 1,
+          "philosophy": 1,
+          "prop_firm_example": 1,
+          "tiers": 1
+        },
+        "exit_timing": {
+          "action": 2214,
+          "confidence": 2214,
+          "reasoning": 2214
+        },
+        "regime_classification": {
+          "confidence": 3072,
+          "reasoning": 3072,
+          "regime": 3072,
+          "regime_probabilities": 3072
+        },
+        "risk_sizing": {
+          "drawdown_multiplier": 2214,
+          "final_risk_pct": 2214,
+          "kelly_fraction": 2214,
+          "kelly_full": 2214,
+          "reasoning": 2214,
+          "risk_amount_usd": 2214,
+          "volatility_multiplier": 2214
+        }
+      },
+      "canonical_system_prompt_rows": 7502,
+      "confidence": {
+        "exit_timing": {
+          "count": 2214,
+          "max": 0.9,
+          "mean": 0.6043261065943993,
+          "median": 0.597,
+          "min": 0.4,
+          "p25": 0.513,
+          "p75": 0.678
+        },
+        "regime_classification": {
+          "count": 3072,
+          "max": 0.95,
+          "mean": 0.7497773437499999,
+          "median": 0.749,
+          "min": 0.55,
+          "p25": 0.652,
+          "p75": 0.84925
+        }
+      },
+      "duplicate_full_records_within_split": 0,
+      "duplicate_user_inputs_within_split": 0,
+      "exit_actions": {
+        "EXIT": 773,
+        "HOLD": 1441
+      },
+      "message_count_anomalies": 0,
+      "regime_argmax_errors": 0,
+      "regime_labels": {
+        "BEAR_EXHAUST": 511,
+        "BEAR_STRONG": 511,
+        "BULL_EXHAUST": 538,
+        "BULL_STRONG": 528,
+        "TRANSITION_BOT": 515,
+        "TRANSITION_TOP": 469
+      },
+      "regime_probability_sum_errors": 0,
+      "risk_sizing": {
+        "final_risk_at_0_05_pct_floor_rows": 1819,
+        "final_risk_pct": {
+          "count": 2214,
+          "max": 0.2461,
+          "mean": 0.056952619692863596,
+          "median": 0.05,
+          "min": 0.05,
+          "p25": 0.05,
+          "p75": 0.05
+        },
+        "kelly_fraction": {
+          "count": 2214,
+          "max": 0.1554,
+          "mean": 0.10557999096657635,
+          "median": 0.1,
+          "min": 0.1,
+          "p25": 0.1,
+          "p75": 0.1
+        },
+        "kelly_fraction_at_0_1_floor_rows": 1668,
+        "kelly_full": {
+          "count": 2214,
+          "max": 0.6217,
+          "mean": 0.2010151761517615,
+          "median": 0.22694999999999999,
+          "min": -0.9896,
+          "p25": 0.08424999999999999,
+          "p75": 0.39844999999999997
+        },
+        "kelly_full_formula_errors": 0,
+        "negative_full_kelly_rows": 380,
+        "reasoning_vs_kelly_fraction_mismatches": 1270,
+        "risk_amount_arithmetic_errors": 0,
+        "rows": 2214
+      },
+      "risk_volatility_regimes": {
+        "EXTREME": 569,
+        "HIGH": 525,
+        "LOW": 568,
+        "NORMAL": 552
+      },
+      "role_patterns": {
+        "system|user|assistant": 7502
+      },
+      "rows": 7502,
+      "tasks": {
+        "algorithm_understanding": 2,
+        "exit_timing": 2214,
+        "regime_classification": 3072,
+        "risk_sizing": 2214
+      },
+      "unique_system_prompts": 1
+    },
+    "train": {
+      "assistant_json_failures": 0,
+      "assistant_keys": {
+        "algorithm_understanding": {
+          "application": 2,
+          "barriers": 1,
+          "benefit": 1,
+          "calculation": 1,
+          "concept": 6,
+          "direction_aware": 1,
+          "entry_vs_management": 1,
+          "explanation": 1,
+          "formula": 1,
+          "interpretation": 1,
+          "labeling": 1,
+          "mechanism": 1,
+          "prop_firm_relevance": 1,
+          "raw_alpha": 1,
+          "regime_actions": 1,
+          "sell_quality_formula": 1,
+          "threshold_selection": 1,
+          "trading_implications": 1,
+          "value": 1
+        },
+        "exit_timing": {
+          "action": 12786,
+          "confidence": 12786,
+          "reasoning": 12786
+        },
+        "regime_classification": {
+          "confidence": 16928,
+          "reasoning": 16928,
+          "regime": 16928,
+          "regime_probabilities": 16928
+        },
+        "risk_sizing": {
+          "drawdown_multiplier": 12786,
+          "final_risk_pct": 12786,
+          "kelly_fraction": 12786,
+          "kelly_full": 12786,
+          "reasoning": 12786,
+          "risk_amount_usd": 12786,
+          "volatility_multiplier": 12786
+        }
+      },
+      "canonical_system_prompt_rows": 42506,
+      "confidence": {
+        "exit_timing": {
+          "count": 12786,
+          "max": 0.9,
+          "mean": 0.6031080869701236,
+          "median": 0.593,
+          "min": 0.4,
+          "p25": 0.511,
+          "p75": 0.676
+        },
+        "regime_classification": {
+          "count": 16928,
+          "max": 0.95,
+          "mean": 0.7504794423440454,
+          "median": 0.749,
+          "min": 0.55,
+          "p25": 0.65,
+          "p75": 0.851
+        }
+      },
+      "duplicate_full_records_within_split": 0,
+      "duplicate_user_inputs_within_split": 0,
+      "exit_actions": {
+        "EXIT": 4458,
+        "HOLD": 8328
+      },
+      "message_count_anomalies": 0,
+      "regime_argmax_errors": 0,
+      "regime_labels": {
+        "BEAR_EXHAUST": 2812,
+        "BEAR_STRONG": 2774,
+        "BULL_EXHAUST": 2853,
+        "BULL_STRONG": 2802,
+        "TRANSITION_BOT": 2812,
+        "TRANSITION_TOP": 2875
+      },
+      "regime_probability_sum_errors": 0,
+      "risk_sizing": {
+        "final_risk_at_0_05_pct_floor_rows": 10509,
+        "final_risk_pct": {
+          "count": 12786,
+          "max": 0.2298,
+          "mean": 0.056818958235570156,
+          "median": 0.05,
+          "min": 0.05,
+          "p25": 0.05,
+          "p75": 0.05
+        },
+        "kelly_fraction": {
+          "count": 12786,
+          "max": 0.1562,
+          "mean": 0.10582250899421243,
+          "median": 0.1,
+          "min": 0.1,
+          "p25": 0.1,
+          "p75": 0.1
+        },
+        "kelly_fraction_at_0_1_floor_rows": 9601,
+        "kelly_full": {
+          "count": 12786,
+          "max": 0.6246,
+          "mean": 0.20096381198185514,
+          "median": 0.2366,
+          "min": -1.0607,
+          "p25": 0.07522500000000001,
+          "p75": 0.3996
+        },
+        "kelly_full_formula_errors": 0,
+        "negative_full_kelly_rows": 2289,
+        "reasoning_vs_kelly_fraction_mismatches": 7208,
+        "risk_amount_arithmetic_errors": 0,
+        "rows": 12786
+      },
+      "risk_volatility_regimes": {
+        "EXTREME": 3171,
+        "HIGH": 3173,
+        "LOW": 3186,
+        "NORMAL": 3256
+      },
+      "role_patterns": {
+        "system|user|assistant": 42506
+      },
+      "rows": 42506,
+      "tasks": {
+        "algorithm_understanding": 6,
+        "exit_timing": 12786,
+        "regime_classification": 16928,
+        "risk_sizing": 12786
+      },
+      "unique_system_prompts": 1
+    }
+  }
+}
