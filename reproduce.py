@@ -6,7 +6,6 @@ import shutil
 import pandas as pd
 import numpy as np
 from scripts.experiments import run_market_grid,run_profiles,run_robustness,participation_contrasts,interval
-from cmtf import synthetic_study
 ROOT=Path(__file__).resolve().parent
 
 def main():
@@ -28,14 +27,11 @@ def main():
     assert left[keys].equals(right[keys]), 'Contrast identifiers changed'
     np.testing.assert_allclose(left[['mean','se','low95','high95']],right[['mean','se','low95','high95']],rtol=1e-9,atol=1e-11)
     actual.to_csv(ROOT/'results/participation_contrast_summary.csv',index=False)
-    synthetic_study.main()
-    for source in (ROOT/'cmtf').glob('synthetic_*.*'):
-        if source.suffix in ['.csv','.json']:shutil.copy(source,ROOT/'results/cmtf'/source.name)
     for name in ['market_grid_episodes.csv','profile_episodes.csv','robustness_episodes.csv']:
         data=pd.read_csv(ROOT/'results'/name)
         assert data.max_abs_cash_residual.max()<1e-6
         assert data.max_abs_inventory_residual.max()<1e-8
     from scripts.make_figures import main as make_figures
     make_figures()
-    print('PASS: 1,312 market episodes, reported contrasts, and synthetic CMTF diagnostic regenerated.')
+    print('PASS: 1,312 market episodes, reported contrasts, regenerated.')
 if __name__=='__main__':main()

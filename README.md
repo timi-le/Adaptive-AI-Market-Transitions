@@ -1,30 +1,49 @@
-# Adaptive Participation and Causal Evidence Research
-Timilehin Olapade — ATRX Intelligence, Haldane Technologies Inc.
+# Adaptive Participation and Market Feedback
 
-This release contains two completed, evidence-bounded manuscripts and a short non-archival workshop version. The numerical claims concern recorded-response audits and explicitly synthetic experiments.
+**A Deployment Audit and Reproducible Simulation Study**  
+Timilehin Olapade · ATRX Intelligence / Haldane Technologies Inc.
 
-## Manuscripts
-- `papers/market/main.pdf`: Adaptive Participation and Market Feedback: A Deployment Audit and Reproducible Simulation Study.
-- `papers/cmtf/main.pdf`: Agentic Causal Macro Intelligence: Evidence Contracts and Regime-Routing Failure under Misspecification.
-- `papers/agenthon/main.pdf`: Auditing Financial Decision Systems before Simulating Market Feedback (short version of the market study).
+This repository contains the market-feedback research study and its short workshop derivative. The separate CMTF evidence-routing paper is not part of this repository's current tree.
 
-All three include editable LaTeX. The first two include supplementary methodological detail. Their abstracts are available in plain text. Prior proposal wording about established alpha decay, crash boundaries, and full model-population inference has been superseded by the measured results here.
+## Read the work
+- [Market manuscript](papers/market/main.pdf) · [LaTeX source](papers/market/main.tex)
+- [Short workshop manuscript](papers/agenthon/main.pdf) · [LaTeX source](papers/agenthon/main.tex)
+- [Evidence and disclosure boundaries](DATA_AVAILABILITY.md)
 
-## Run
-Use Python 3.12. Create a virtual environment, then run:
-```sh
+## What the study establishes
+- An operational audit reports 28,165 events and 229 entry-to-execution-response pairs; missing portfolio responses prevent full two-role replay.
+- Directional agreement across four exported model labels ranges from 52.2% to 80.7% on 5,998 common inputs. This is an export audit, not a fresh model benchmark.
+- 1,312 synthetic episodes examine participation, behavioral profiles and shocks. The sign of the participation–shock interaction depends on the assumed profile.
+
+These results do not establish live alpha, calibrated crash thresholds, endogenous liquidity withdrawal, or actual inference from six alternative models. The simulator is not an ABIDES matching engine or an Agenthon competition submission.
+
+## Reproduce
+Use Python 3.12 in a fresh virtual environment:
+
+```bash
 python -m pip install -r requirements.txt
 python reproduce.py
 python -m unittest discover -s tests
 ```
-`reproduce.py` generates 1,312 market episodes and 800 CMTF diagnostic datasets (4,000 method rows), checks reported market contrasts, and verifies accounting residuals. It does not call a model service or broker. Open `notebooks/Reproduce_Research.ipynb` for a guided run. Install JupyterLab separately if needed to open a browser-based notebook editor.
 
-## Build LaTeX / Overleaf
-Upload a paper folder as a ZIP, select `main.tex`, and compile with pdfLaTeX. Locally use `latexmk -pdf main.tex` inside the paper folder. Figures and references are included.
+The market-only runner regenerates the 1,312 episodes, compares reported contrasts with archived values, and updates figures. Eight market contract tests are supplied. [Jupyter notebook](notebooks/Reproduce.ipynb) runs the same commands. No broker connection, paid inference API, GPU or private logs are required for the synthetic study.
 
-## Interpretation
-1. Four exported model labels show descriptive response diversity.
-2. Assumed response profiles produce different participation/shock interactions in the simulator.
-3. Synthetic regime routing helps under nominal assumptions but can fail under observation misspecification; oracle states do not remove omitted-confounder bias.
+## Repository map
+| Directory | Purpose |
+|---|---|
+| `papers/market` | Main manuscript, bibliography and figures |
+| `papers/agenthon` | Short non-archival workshop derivative |
+| `market_lab` | Research simulator and log utilities |
+| `configs` | Declared experimental settings |
+| `scripts` | Experiments and figure generation |
+| `results` | Synthetic outputs and aggregate audits |
+| `audit_scripts` | Restricted-input audit procedures |
+| `tests` | Contract checks |
+| `notebooks` | Guided reproduction |
 
-See DATA_AVAILABILITY.md for access restrictions. Private logs and credentials are excluded. Public versions use neutral formatting and are not labeled as conference submissions. The author retains responsibility for all claims and submission decisions.
+## Scope and versioning
+Research artifacts are distinct from the proprietary production system. Raw operational evidence is excluded; its audit cannot be independently regenerated from this repository alone. See the manuscript AI Use Statement for the division between author-originated work and assistance.
+
+The historical combined revision remains in Git history. Separation of the current tree is organizational; it does not erase previously public files. The companion CMTF repository is pending creation; no remote URL is claimed here.
+
+No venue-specific submission status is asserted by this public preprint. Do not use this named repository as a link in an anonymous submission. No software license is granted merely by public availability.

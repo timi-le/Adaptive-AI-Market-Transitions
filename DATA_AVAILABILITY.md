@@ -1,8 +1,9 @@
-# Data and evidence boundaries
-The synthetic market experiments and CMTF coefficient diagnostic are reproducible without external services. All parameters, seeds, code, and seed-level results are supplied.
+# Data and disclosure boundary
 
-Operational counts and corpus results are descriptive aggregates from author-supplied restricted inputs. Private repository source, full trading logs, account identifiers, and prompt/response originals are not redistributed here. The audit scripts require separately authorized input files. Full replay of both production models is not possible from the recovered records.
+Included: research simulation source, chosen parameters and seeds, aggregate audit statistics, synthetic result tables, manuscripts, and reproduction tests.
 
-The six policy profiles are assumed response rules, not measured alternative language models. No real-market alpha, crash phase boundary, or full CMTF live-controller benefit is claimed. Source filenames in audit scripts indicate expected input schemas, not files included in this release.
+Excluded: private trading logs, production model prompts, credentials, account identifiers, production execution engine, private author archive, and proprietary strategy implementation.
 
-Public source is made available for inspection. No additional license grant for proprietary source or model-provider outputs is implied. Third-party dependencies retain their own licenses.
+The simulation models hypothetical policies. Restricted operational audits are descriptive and require the original private files to reproduce. Their scripts are provided for transparency, not as evidence that restricted inputs are available.
+
+Do not add proprietary records to issues, notebook outputs, CI logs or public commits. The current repository split does not remove earlier versions from Git history.

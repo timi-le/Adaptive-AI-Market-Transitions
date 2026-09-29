@@ -32,6 +32,4 @@ def main():
     ax.set_xlabel('Assumed response profile');ax.set_ylabel('Drawdown interaction (percentage points)')
     ax.set_title('Participation × shock; shared-error setting 0.9',fontsize=10)
     fig.savefig(assets/'profile_interactions.pdf');plt.close(fig)
-    source=ROOT/'cmtf/assets/synthetic_results.png'
-    if source.exists():shutil.copy(source,ROOT/'papers/cmtf/assets/synthetic_results.png')
 if __name__=='__main__':main()
